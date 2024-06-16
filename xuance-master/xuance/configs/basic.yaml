@@ -1,0 +1,20 @@
+dl_toolbox: "torch"  # The deep learning toolbox. Choices: "torch", "mindspore", "tensorflow"
+
+project_name: "XuanCe_UAV"
+logger: "tensorboard"  # Choices: "tensorboard", "wandb".
+wandb_user_name: "yxd0124031"
+
+parallels: 10
+seed: 2910
+render: True
+render_mode: 'rgb_array' # Choices: 'human', 'rgb_array'.
+fps: 50
+test_mode: False
+test_steps: 1000
+
+device: "cuda:0"
+
+# PyTorch: "cpu", "cuda:0";
+# TensorFlow: "cpu"/"CPU", "gpu"/"GPU";
+# MindSpore: "CPU", "GPU", "Ascend", "Davinci"
+
