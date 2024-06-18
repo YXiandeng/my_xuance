@@ -44,7 +44,7 @@ class New_Env_MAS:
         self.n_agents = 4
         self.dim_obs = 2 + self.num_users  # 一个智能体观察的维度
         self.dim_state = self.dim_obs * self.n_agents  # 全局状态的维度
-        self.dim_action = self.num_users + self.num_users + 1  # 功率  + 带宽 +无人机飞行方位角  # 动作维度（连续）
+        self.dim_action = self.num_users + self.num_users + 1  # 功率  + 带宽 +无人机飞行方位角         # 动作维度（连续）
         self.n_actions = 5  # 离散操作数（离散）
 
         """
@@ -111,6 +111,8 @@ class New_Env_MAS:
         return self.state_space, info
 
     def step(self, actions):
+        # 动作钳住在（-1，1）
+        actions = np.clip(actions, -1, 1)
         info = {}
         # action (功率、带宽、角度)
         observation_space = self.state_space.reshape((self.num_uavs, self.dim_obs))
@@ -213,7 +215,7 @@ class New_Env_MAS:
 
         obs_n = np.zeros((self.num_uavs, self.num_users + 2))
         obs_n[:, :2] = all_uavs_loc  # 将数组A放在数组B的前四行俩列中
-        print(all_uavs_loc)
+        # print(all_uavs_loc)
         # # 定义文件名
         # # filenames = ['uav_location_1.csv', 'uav_location_2.csv', 'uav_location_3.csv', 'uav_location_4.csv']
         # filenames = ['uav_location_matd3_1.csv', 'uav_location_matd3_2.csv', 'uav_location_matd3_3.csv', 'uav_location_matd3_4.csv']

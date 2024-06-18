@@ -86,7 +86,7 @@ class Runner_MARL_EA(Runner_Base):
         for i in range(args.pop_size):
             pop.append(REGISTRY_Agent[args.agent](args, self.envs, args.device))
 
-
+        # TODO fedan
         self.agents = REGISTRY_Agent[args.agent](args, self.envs, args.device)
         self.on_policy = self.agents.on_policy
 
